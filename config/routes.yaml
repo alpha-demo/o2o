@@ -1,0 +1,12 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# O2O
+beer_filter:
+  path: /o2o/beer
+  controller: App\Controller\O2OController::getBeers
+
+beer_paint:
+  path: /o2o/beer/{id}
+  controller: App\Controller\O2OController::getBeerDetails
