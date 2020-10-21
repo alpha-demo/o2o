@@ -4,6 +4,7 @@
 
     use App\Service\PunkApiService;
     use http\Exception;
+    use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -17,11 +18,11 @@
 
         private $objPunkApiService;
 
-        public function getBeers()
+        public function getBeers(Request $request)
         {
-
+            $prmStrFoodFilter = $request->query->get('food');
             try {
-                $arrBeers    = $this->objPunkApiService->getBeers();
+                $arrBeers    = $this->objPunkApiService->getBeers($prmStrFoodFilter);
                 $objResponse = new JsonResponse($arrBeers);
                 $objResponse->headers->set("Content-Type", "application/json");
                 return $objResponse;
