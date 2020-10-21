@@ -8,5 +8,5 @@ beer_filter:
   controller: App\Controller\O2OController::getBeers
 
 beer_paint:
-  path: /o2o/beer
-  controller: App\Controller\O2OController::getBeersDetails
+  path: /o2o/beer/{id}
+  controller: App\Controller\O2OController::getBeerDetails

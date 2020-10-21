@@ -32,4 +32,17 @@
 
         }
 
+        public function getBeerDetails($id)
+        {
+            try {
+                $arrBeers    = $this->objPunkApiService->getBeerDetails($id);
+                $objResponse = new JsonResponse($arrBeers);
+                $objResponse->headers->set("Content-Type", "application/json");
+                return $objResponse;
+            } catch (Exception $e) {
+                throw new BadRequestHttpException($e->getMessage(), null, $e->getCode());
+            }
+
+        }
+
     }
