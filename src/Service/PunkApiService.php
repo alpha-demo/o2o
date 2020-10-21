@@ -44,4 +44,30 @@
             }
             return $arrObjBeerSummary;
         }
+
+        public function getBeerDetails($prmIntId)
+        {
+            $objCustomBeerDetails = new \stdClass();
+            try {
+                $client            = new Client();
+                $objGuzzleResponse = $client->request('GET', $this->API_ENDPOINT . '/' . $prmIntId, [
+                    'verify' =>
+                        false
+                ]);
+                $arrObjBeers       = json_decode($objGuzzleResponse->getBody());
+                if (!empty($arrObjBeers)) {
+                    $objBeerDetails                    = $arrObjBeers[0];
+                    $objCustomBeerDetails->id          = $objBeerDetails->id;
+                    $objCustomBeerDetails->nombre      = $objBeerDetails->name;
+                    $objCustomBeerDetails->descripcion = $objBeerDetails->description;
+                    $objCustomBeerDetails->imagen      = $objBeerDetails->image_url;
+                    $objCustomBeerDetails->slogan      = $objBeerDetails->tagline;
+                    $objCustomBeerDetails->fabricada   = $objBeerDetails->first_brewed;
+                }
+            } catch (GuzzleException $e) {
+                echo $e->getMessage();
+            }
+            return $objCustomBeerDetails;
+        }
+
     }
