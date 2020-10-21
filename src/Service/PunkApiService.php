@@ -45,6 +45,14 @@
             return $arrObjBeerSummary;
         }
 
+        /**
+         * Retrieves custom beers details, given an id, for example for id: 3 it would be:
+         * https://api.punkapi.com/v2/beers/3
+         *
+         * @param $prmIntId Integer Id of the beer
+         *
+         * @return \stdClass
+         */
         public function getBeerDetails($prmIntId)
         {
             $objCustomBeerDetails = new \stdClass();

@@ -29,7 +29,6 @@
             } catch (Exception $e) {
                 throw new BadRequestHttpException($e->getMessage(), null, $e->getCode());
             }
-
         }
 
         public function getBeerDetails($id)
@@ -42,7 +41,6 @@
             } catch (Exception $e) {
                 throw new BadRequestHttpException($e->getMessage(), null, $e->getCode());
             }
-
         }
 
     }
